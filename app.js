@@ -1,7 +1,8 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
-const helmet = require('helmet');
-const compression = require('compression');
+const helmet = require("helmet");
+const compression = require("compression");
 
 const db = require("./db");
 const recipeRoutes = require("./routes/recipe");

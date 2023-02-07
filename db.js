@@ -3,18 +3,21 @@ const MongoClient = require("mongodb").MongoClient;
 const mongoUrl = process.env.MONGODB_URL;
 let _db;
 
-const initDb = callback => {
+const initDb = (callback) => {
   if (_db) {
     console.log("Database already initialized.");
     callback(null, _db);
   }
 
-  MongoClient.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(client => {
+  MongoClient.connect(mongoUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then((client) => {
       _db = client;
       callback(null, _db);
     })
-    .catch(err => {
+    .catch((err) => {
       callback(err);
     });
 };
@@ -29,5 +32,5 @@ const getDb = () => {
 
 module.exports = {
   initDb,
-  getDb
+  getDb,
 };
